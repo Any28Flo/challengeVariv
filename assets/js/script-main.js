@@ -1,6 +1,9 @@
 
 var loadPage = () =>{
   const url="https://sandbox-api.openpay.mx/v1/";
+  var Openpay = require('openpay');
+  var openpay = new Openpay('m9mjv097cj4m57ibfzug ', ' sk_e5c54b6f2baf44ddbdc58212f542619d', [ isProduction ]);
+
 
   const name = document.getElementById("inputName");
   const lastName = document.getElementById("inputLastName");
@@ -83,7 +86,17 @@ var loadPage = () =>{
       },
       "phone_number":"44209087654"
     };
+    var customerRequest = {
+   'name': name_value,
+   'email': email_value,
+   'requires_account': false
+   };
+
+   openpay.customers.create(customerRequest, function(error, customer) {
+  // ...
+  });
 
   }
+
 }
 $(document).ready(loadPage);
