@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/style-main.css">
+  <title>Registrar Cliente</title>
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label>Nombre</label>
+            <input  class="form-control" id="inputName" placeholder="Nombre">
+          </div>
+          <div class="form-group col-md-6">
+            <label>Apellido</label>
+            <input  class="form-control" id="inputLastName" placeholder="Apellido">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">Correo</label>
+            <input  class="form-control" id="inputEmail" placeholder="Correo">
+          </div>
+          <div class="form-group col-md-6">
+            <label >Dirección</label>
+            <input  class="form-control" id="line1" placeholder=" 1234 Main St">
+          </div>
+          <div class="form-group">
+            <label>CP</label>
+            <input type="text" class="form-control" id="zipCode" placeholder="Código postal">
+          </div>
+          <div class="form-group">
+            <label>Colonia</label>
+            <select class="" name=""  id="line2" placeholder="Colonia">
+
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Ciudad</label>
+            <input type="text" class="form-control" id="city" placeholder="Ciudad">
+          </div>
+          <div class="form-group">
+            <label>Estado</label>
+            <input type="text" class="form-control" id="state" placeholder="Estado">
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" id="creatingCustomer">Registrar</button>
+        <button type="button" class="btn btn-primary"> Cancelar</button>
+    </div>
+  </div>
+</div>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
+<script type="text/javascript" src ="assets/js/script-main.js">
+
+</script>
+</html>
