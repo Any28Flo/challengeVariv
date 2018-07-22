@@ -5,10 +5,96 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+
+
   <link rel="stylesheet" href="static/css/style-main.css">
   <title>Challenge</title>
 </head>
 <body>
+
+  <div class="container-fluid hero">
+    <div class=" row contenido-header">
+
+    </div><!-- contenido-header -->
+    <div class="row informacion">
+      <div class="col-12 ">
+
+        <h2 class="empresa">Thsóm baíl</h2>
+
+        <!-- <p><strong>Data analytics</strong> for your business</p> -->
+      </div>
+    </div><!--informacion -->
+    <div class="row login">
+      <div class="col-8  offset-2  col-md-6 offset-md-3  col-lg-4  offset-lg-4 align-self-center  input ">
+        <div class="col-12  center datainput">
+            <label class="sr-only">Usuario</label>
+            <div class="input-group mb-2 mb-sm-0">
+              <div class="input-group-addon"><i class="fa fa-user iconInput" aria-hidden="true"></i></div>
+            <input type="text" class="form-control iconInput" id="userName" placeholder="Usuario">
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 center datainput">
+            <label class="sr-only" for="inlineFormInputGroup">Contraseña</label>
+            <div class="input-group mb-2 mb-sm-0">
+              <div class="input-group-addon"><i class="fa fa-lock iconInput" aria-hidden="true"></i></div>
+            <input type="password" class="form-control" id="userPassWord" placeholder="Contraseña">
+            </div>
+        </div>
+        <div class="col-12 center">
+            <button  class=" btnLogin" id="go">Ingresar</button>
+        </div>
+        <div class="col-12  center">
+            <button type="button" class=" btnLogin" data-toggle="modal" data-target="#exampleModal">
+              Registra nuevo
+            </button>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Registrar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form class="col s12" id="crear-usuario">
+                      <div class="col-12   col-sm-12 center datainput">
+                          <label class="sr-only">Usuario</label>
+                          <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon"><i class="fa fa-user iconInput" aria-hidden="true"></i></div>
+                          <input type="text" class="form-control iconInput" id="nameNewUser" placeholder="Usuario">
+                          </div>
+                      </div>
+                      <div class="col-12   col-sm-12 center datainput">
+                          <label class="sr-only">Email</label>
+                          <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon"><i class="fa fa-envelope iconInput" aria-hidden="true"></i></div>
+                          <input type="email" class="form-control iconInput" id="emailNewUser" placeholder="Correo electronico">
+                          </div>
+                      </div>
+                      <div class="col-12 col-sm-12 center datainput">
+                          <label class="sr-only" for="inlineFormInputGroup">Contraseña</label>
+                          <div class="input-group mb-2 mb-sm-0">
+                            <div class="input-group-addon"><i class="fa fa-lock iconInput" aria-hidden="true"></i></div>
+                          <input type="password" class="form-control iconInput" id="passwordNewUser" placeholder="Contraseña">
+                          </div>
+                      </div>
+                    </form><!-- form crear-usuario -->
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btnLogin" data-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary btnLogin" id="createUser">Guardar cambios</button>
+                  </div>
+                </div>
+              </div>
+            </div><!-- modal -->
+        </div>
+      </div><!-- login -->
+      </div>
+    </div>
+  </div><!-- hero -->
   <div class="container">
     <div class="row">
       <div class="col-12">
