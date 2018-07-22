@@ -1,39 +1,89 @@
 
-// Click events
-var buttonAddClient=document.getElementById('addClient');
-var buttonSeeClient = document.getElementById("seeClients");
+var loadPage = () =>{
+  const url="https://sandbox-api.openpay.mx/v1/";
 
-$(buttonAddClient).click(function (){
-  var URLactual = window.location;
-alert(URLactual);
-window.location.href= "root/newClient.html"
-})
+  const name = document.getElementById("inputName");
+  const lastName = document.getElementById("inputLastName");
+  const email = document.getElementById("inputEmail");
+  const address = document.getElementById("line1");
+  const labelZipCode = document.getElementById('zipCode');
 
-$(buttonSeeClient).click(function(){
-  window.location.href= "root/seeClients.html"
-})
+  const line2= document.getElementById("line2");
+  const city = document.getElementById("city");
+  const state = document.getElementById("state");
+  // Buttons
+
+  const buttonAddClient=document.getElementById('addClient');
+  const buttonSeeClient = document.getElementById("seeClients");
+  const buttonCreatingClient = document.getElementById("creatingCustomer");
+
+  $(buttonAddClient).click( ()=>{
+    window.location.href= "root/newClient.html"
+  })
+
+  $(buttonSeeClient).click(()=>{
+    window.location.href= "root/seeClients.html"
+  })
+  $(buttonCreatingClient).click(()=>{
+    newCustomer();
+  })
+  // Method zip code
 
 
-// Redirec another page
+  $(labelZipCode).keyup(function(){
+    const zipCode= labelZipCode.value;
+    const ulrZipCode = "https://api-codigos-postales.herokuapp.com/v2/codigo_postal/" + zipCode ;
+    detailZipCode(zipCode);
+  })
+
+
+  const detailZipCode = (zipCode) =>{
+
+    const ulrZipCode = "https://api-codigos-postales.herokuapp.com/v2/codigo_postal/" + zipCode ;
+
+    $.getJSON (ulrZipCode ,function(data){
+
+        var colonias = data.colonias;
+        for(let i= 0 ; i< colonias.length ; i++){
+          $(line2).append('<option >'+colonias[i]+'</option>')
+
+        }
+
+        $(city).val(data.municipio);
+        $(state).val(data.estado);
 
 
 
-// var newCustomer = {
-//   "name":"John",
-//   "email":"johndoe@example.com",
-//   "last_name":"Doe",
-//   "address":{
-//     "city":"Queretaro",
-//     "state":"Queretaro",
-//     "line1":"Calle Morelos no 10",
-//     "line2":"col. san pablo",
-//     "postal_code":"76000",
-//     "country_code":"MX"
-//   },
-//   "phone_number":"44209087654"
-// };
-//
-// openpay.customers.create(newCustomer, function(error, body) {
-//     error;    // null if no error occurred (status code != 200||201||204)
-//     body;     // contains the object returned if no error occurred (status code == 200||201||204)
-// });
+
+    });
+  }
+  // Creating a customer
+  const newCustomer = ()=>{
+    const name_value = name.value;
+    const lastName_value = lastName.value;
+    const email_value = email.value;
+    const address_value = address.value;
+    const labelZipCode_value = labelZipCode.value;
+    const city_value = city.value;
+    const state_value =  state.value;
+    const zipCode_value= labelZipCode.value;
+
+    console.log(`${city_value}`)
+    var newCustomer = {
+      "name":"John",
+      "email":"johndoe@example.com",
+      "last_name":"Doe",
+      "address":{
+        "city":"Queretaro",
+        "state":"Queretaro",
+        "line1":"Calle Morelos no 10",
+        "line2":"col. san pablo",
+        "postal_code":"76000",
+        "country_code":"MX"
+      },
+      "phone_number":"44209087654"
+    };
+
+  }
+}
+$(document).ready(loadPage);
