@@ -1,0 +1,15 @@
+html{
+  font-family: 'Oswald', sans-serif;
+
+}
+
+.hero{
+  background-image: url("../img/rawpixel-626044-unsplash.jpg");
+  height: 100vh;
+  background-position: top center;
+  background-size: cover;
+}
+.titlePage{
+  font-size: : 7.0vw;
+  color: white;
+}
