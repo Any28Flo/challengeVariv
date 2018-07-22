@@ -1,10 +1,9 @@
 
 var loadPage = () =>{
-  const url="https://sandbox-api.openpay.mx/v1/";
-  var Openpay = require('openpay');
-  var openpay = new Openpay('m9mjv097cj4m57ibfzug ', ' sk_e5c54b6f2baf44ddbdc58212f542619d', [ isProduction ]);
 
 
+  var urlApi = "https://sandbox-api.openpay.mx/v1/m9mjv097cj4m57ibfzug/customers"
+  console.log(urlApi)
   const name = document.getElementById("inputName");
   const lastName = document.getElementById("inputLastName");
   const email = document.getElementById("inputEmail");
@@ -28,7 +27,7 @@ var loadPage = () =>{
     window.location.href= "root/seeClients.html"
   })
   $(buttonCreatingClient).click(()=>{
-    newCustomer();
+    dataCustomer();
   })
   // Method zip code
 
@@ -61,7 +60,7 @@ var loadPage = () =>{
     });
   }
   // Creating a customer
-  const newCustomer = ()=>{
+  const dataCustomer = ()=>{
     const name_value = name.value;
     const lastName_value = lastName.value;
     const email_value = email.value;
@@ -70,33 +69,53 @@ var loadPage = () =>{
     const city_value = city.value;
     const state_value =  state.value;
     const zipCode_value= labelZipCode.value;
-
+    const line2_value = line2.value;
     console.log(`${city_value}`)
-    var newCustomer = {
-      "name":"John",
-      "email":"johndoe@example.com",
-      "last_name":"Doe",
+
+    const newCustomer = {
+      "name":name_value ,
+      "email":email_value,
+      "last_name":name_value ,
       "address":{
-        "city":"Queretaro",
-        "state":"Queretaro",
-        "line1":"Calle Morelos no 10",
-        "line2":"col. san pablo",
-        "postal_code":"76000",
+        "city": city_value,
+        "state":state_value,
+        "line1":address_value,
+        "line2":line2_value,
+        "postal_code":labelZipCode_value,
         "country_code":"MX"
       },
       "phone_number":"44209087654"
     };
-    var customerRequest = {
-   'name': name_value,
-   'email': email_value,
-   'requires_account': false
-   };
 
-   openpay.customers.create(customerRequest, function(error, customer) {
-  // ...
-  });
+
+
+postData(urlApi)
+  .then(newCustomer => {
+    console.log('complete')
+  })
+  .catch(error => console.error(error));
+
+    function postData(e) {
+      return fetch(urlApi, {
+        method: 'PUT',
+        body: JSON.stringify({
+          id: 1,
+          title: 'This is a Test',
+          body: 'Some Random Text',
+          userId: 1
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+    .then(response => response.json())
+      .catch(error => console.error(`Fetch Error =\n`, error));
+    };
+
 
   }
+
+
 
 }
 $(document).ready(loadPage);
