@@ -1,15 +1,16 @@
 
-
-var buttonAddClient=document.getElementById('addClient'); //returns a HTML DOM Object
+// Click events
+var buttonAddClient=document.getElementById('addClient');
 var buttonSeeClient = document.getElementById("seeClients");
 
 $(buttonAddClient).click(function (){
-  window.location.href =
-  "../../newClient.html";
+  var URLactual = window.location;
+alert(URLactual);
+window.location.href= "root/newClient.html"
 })
 
 $(buttonSeeClient).click(function(){
-  window.location.href= "../../seeClients.html"
+  window.location.href= "root/seeClients.html"
 })
 
 
