@@ -8,4 +8,4 @@ challengeVariv.get('/',function(req,res){
 	console.log("Server on");
 })
 
-starWarsApp.listen(8080);
+challengeVariv.listen(8080);
