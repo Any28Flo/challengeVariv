@@ -1,9 +1,9 @@
 
-console.log("hello")
+const loadPage = () =>{
 
-var loadPage = () =>{
 
-  var urlApi = "https://sandbox-api.openpay.mx/v1/m9mjv097cj4m57ibfzug/customers"
+  const urlApi = "https://sandbox-api.openpay.mx/v1/moiep6umtcnanql3jrxp"
+
   const name = document.getElementById("inputName");
   const lastName = document.getElementById("inputLastName");
   const email = document.getElementById("inputEmail");
@@ -18,7 +18,7 @@ var loadPage = () =>{
   const buttonAddClient=document.getElementById('addClient');
   const buttonSeeClient = document.getElementById("seeClients");
   const buttonCreatingClient = document.getElementById("creatingCustomer");
-
+  const phone = document.getElementById('phone');
   $(buttonAddClient).click( ()=>{
     // window.location.href= "root/newClient.html"
   })
@@ -34,7 +34,6 @@ var loadPage = () =>{
 
   $(labelZipCode).keyup(function(){
     const zipCode= labelZipCode.value;
-    console.log(zipCode)
     detailZipCode(zipCode);
   })
 
@@ -42,7 +41,6 @@ var loadPage = () =>{
   const detailZipCode = (zipCode) =>{
 
     const ulrZipCode = "https://api-codigos-postales.herokuapp.com/v2/codigo_postal/" + zipCode ;
-    console.log(ulrZipCode)
     getData(ulrZipCode)
       .then(data =>{
         console.log(data.municipio);
@@ -67,6 +65,7 @@ var loadPage = () =>{
   }
   // Creating a customer
   const dataCustomer = ()=>{
+
     const name_value = name.value;
     const lastName_value = lastName.value;
     const email_value = email.value;
@@ -76,7 +75,8 @@ var loadPage = () =>{
     const state_value =  state.value;
     const zipCode_value= labelZipCode.value;
     const line2_value = line2.value;
-    console.log(`${city_value}`)
+    const phone_value = phone.value;
+
 
     const newCustomer = {
       "name":name_value ,
@@ -90,38 +90,32 @@ var loadPage = () =>{
         "postal_code":labelZipCode_value,
         "country_code":"MX"
       },
-      "phone_number":"44209087654"
+      "phone_number":phone_value
     };
 
+    let username = 'm9mjv097cj4m57ibfzug';
 
-
-postData(urlApi)
-  .then(newCustomer => {
-    console.log('complete')
-  })
-  .catch(error => console.error(error));
-
-    function postData(e) {
-      return fetch(urlApi, {
-        method: 'PUT',
-        body: JSON.stringify({
-          id: 1,
-          title: 'This is a Test',
-          body: 'Some Random Text',
-          userId: 1
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8"
-        }
+    postData(urlApi)
+      .then(data => {
+        console.log( data)
       })
-    .then(response => response.json())
-      .catch(error => console.error(`Fetch Error =\n`, error));
-    };
+      .catch(error => console.error(error));
 
+        function postData(e) {
+          return fetch(urlApi, {
+            method: 'POST',
+            body: JSON.stringify(newCustomer),
+            headers: {
+              'Accept': 'application/json',
+              "Content-type": "application/json; charset=UTF-8",
+              'Authorization': username
 
-  }
+            }
+          })
+        .then(response => response.json())
+          .catch(error => console.error(`Fetch Error =\n`, error));
 
-
-
+        };
+      }
 }
 $(document).ready(loadPage);
