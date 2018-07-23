@@ -2,7 +2,7 @@
 const loadPage = () =>{
 
 
-  const urlApi = "https://sandbox-api.openpay.mx/v1/moiep6umtcnanql3jrxp"
+  const urlApi = "https://sandbox-api.openpay.mx/"
 
   const name = document.getElementById("inputName");
   const lastName = document.getElementById("inputLastName");
