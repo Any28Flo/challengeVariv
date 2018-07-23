@@ -1,9 +1,9 @@
 
+console.log("hello")
+
 var loadPage = () =>{
 
-
   var urlApi = "https://sandbox-api.openpay.mx/v1/m9mjv097cj4m57ibfzug/customers"
-  console.log(urlApi)
   const name = document.getElementById("inputName");
   const lastName = document.getElementById("inputLastName");
   const email = document.getElementById("inputEmail");
@@ -20,7 +20,7 @@ var loadPage = () =>{
   const buttonCreatingClient = document.getElementById("creatingCustomer");
 
   $(buttonAddClient).click( ()=>{
-    window.location.href= "root/newClient.html"
+    // window.location.href= "root/newClient.html"
   })
 
   $(buttonSeeClient).click(()=>{
@@ -34,7 +34,7 @@ var loadPage = () =>{
 
   $(labelZipCode).keyup(function(){
     const zipCode= labelZipCode.value;
-    const ulrZipCode = "https://api-codigos-postales.herokuapp.com/v2/codigo_postal/" + zipCode ;
+    console.log(zipCode)
     detailZipCode(zipCode);
   })
 
@@ -42,9 +42,10 @@ var loadPage = () =>{
   const detailZipCode = (zipCode) =>{
 
     const ulrZipCode = "https://api-codigos-postales.herokuapp.com/v2/codigo_postal/" + zipCode ;
-
-    $.getJSON (ulrZipCode ,function(data){
-
+    console.log(ulrZipCode)
+    getData(ulrZipCode)
+      .then(data =>{
+        console.log(data.municipio);
         var colonias = data.colonias;
         for(let i= 0 ; i< colonias.length ; i++){
           $(line2).append('<option >'+colonias[i]+'</option>')
@@ -54,10 +55,15 @@ var loadPage = () =>{
         $(city).val(data.municipio);
         $(state).val(data.estado);
 
-
-
-
-    });
+      })
+      .catch(error => console.error(error));
+    function getData(e){
+      return fetch(ulrZipCode,{
+        method:'GET',
+      })
+      .then(response => response.json())
+      .catch(error => console.error(`Fetch Error =\n`, error));
+    }
   }
   // Creating a customer
   const dataCustomer = ()=>{

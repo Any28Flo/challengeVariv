@@ -8,7 +8,7 @@ var openpay = new Openpay(' m9mjv097cj4m57ibfzug', ' sk_e5c54b6f2baf44ddbdc58212
 
 challengeVariv.use("/static", express.static(__dirname+'/assets'));
 challengeVariv.use("/root", express.static(__dirname+'/'));
-challengeVariv.use("/urlApi", express.static(__dirname+'openpay'))
+challengeVariv.use("/urlApi", express.static(__dirname+'open'))
 // Support encoded bodies
 challengeVariv.use(bodyParser.urlencoded({ extended: true }));
 // Support json encoded bodies
